@@ -23,20 +23,32 @@ In the function GetSASToken, input parameters “resourceUri”, “keyName”, 
 
 ![](img/azure1.png)
  
-•	“resourceUri”: service bus URL, format is https://{servicebusNamespace}.servicebus.windows.net/{eventHubPath}/messages"
+•	“resourceUri”: service bus URL, format is [https://{servicebusNamespace}.servicebus.windows.net/{eventHubPath}/messages](https://{servicebusNamespace}.servicebus.windows.net/{eventHubPath}/messages)
 o	{servicebusNamespace}: service bus name, you cloud find on the
+ 
+ ![](img/azure2.png)
  
 o	{eventHubPath}: topic or the queue name in the service bus. If no topic or queue, you should create a new one.
  
+  ![](img/azure3.png)
+ 
 •	“keyName”, “key”:
+
+ ![](img/azure4.png)
  
 2)	When everything is done, you can check the event status from the portal.
  
+ ![](img/azure5.png)
+ 
 3)	Regarding your questions on tokens, you can set the token expire time during the creation.
+
 Reference :
-•	Azure Event Hub security model and Authentication
-•	Sending an Event
-Setup your Action Policy
+*	[Azure Event Hub security model and Authentication](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-authentication-and-security-model-overview)
+*	[Sending an Event](https://docs.microsoft.com/en-us/rest/api/eventhub/send-event)
+
+** Setup your Action Policy **
+
+```ruby
 POST https://liveobjects.orange-business.com/api/v0/event2action/actionPolicies
 x-api-key: your-api-key
 Content-Type: application/json
@@ -57,11 +69,16 @@ Content-Type: application/json
         }]
     }
 }
+```
+
 In the previous example you should replace the following placeholders with adequate values :
-•	sevicebusNamespace
-•	eventHubPath
-•	Authorization SAS token
-Test by sending a data
+*	sevicebusNamespace
+*	eventHubPath
+*	Authorization SAS token
+
+## Test by sending a data ##
+
+```ruby
 POST https://liveobjects.orange-business.com/api/v0/data/streams/my-stream
 x-api-key: your-api-key
 Content-Type: application/json
@@ -84,8 +101,10 @@ Content-Type: application/json
     "pressure": 36575
   }
 }
-It's a wrap
+```
+
+## It's a wrap ##
 The data should have been received in the event hub.
-To go further you can read the developer documentation about http push and Triggers and Actions : https://liveobjects.orange-business.com/doc/html/lo_manual_v2.html#E2A_HTTPPUSHACTION
+To go further you can read the developer documentation about http push and Triggers and Actions : [https://liveobjects.orange-business.com/doc/html/lo_manual_v2.html#E2A_HTTPPUSHACTION](https://liveobjects.orange-business.com/doc/html/lo_manual_v2.html#E2A_HTTPPUSHACTION)
 
 
