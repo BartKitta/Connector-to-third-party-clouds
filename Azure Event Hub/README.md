@@ -46,7 +46,7 @@ Reference :
 *	[Azure Event Hub security model and Authentication](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-authentication-and-security-model-overview)
 *	[Sending an Event](https://docs.microsoft.com/en-us/rest/api/eventhub/send-event)
 
-** Setup your Action Policy **
+## Setup your Action Policy ##
 
 ```ruby
 POST https://liveobjects.orange-business.com/api/v0/event2action/actionPolicies
